@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "types": ["react", "react-dom"],
+    "jsx": "react-jsx",          // ✅ or "preserve" if using Next.js before v13
+    "moduleResolution": "node", // ✅ to resolve node_modules correctly
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
