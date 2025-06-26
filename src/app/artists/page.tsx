@@ -9,7 +9,7 @@ type Artist = {
   category: string;
   location: string;
   priceRange: string;
-  image?: string;
+  image: string;
 };
 
 export default function ArtistListingPage() {
