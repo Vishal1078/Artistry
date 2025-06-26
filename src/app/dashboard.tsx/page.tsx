@@ -1,13 +1,33 @@
 'use client';
+
 import { useEffect, useState } from "react";
 
-const dummySubmissions = [
+// ✅ Define a type for submissions
+type Artist = {
+  name: string;
+  category: string;
+  city: string;
+  fee: string;
+};
+
+// ✅ Dummy data typed using Artist[]
+const dummySubmissions: Artist[] = [
   { name: "Amit Sharma", category: "Singer", city: "Delhi", fee: "₹10,000 - ₹25,000" },
   { name: "Neha Verma", category: "Dancer", city: "Mumbai", fee: "₹5,000 - ₹15,000" }
 ];
 
 export default function DashboardPage() {
-  const [submissions, setSubmissions] = useState(dummySubmissions);
+  // ✅ Type the state properly as Artist[]
+  const [submissions, setSubmissions] = useState<Artist[]>([]);
+
+  // ✅ Set the dummy data on mount
+  useEffect(() => {
+    setSubmissions(dummySubmissions);
+  }, []);
+
+  const handleDelete = (index: number) => {
+    setSubmissions(prev => prev.filter((_, i) => i !== index));
+  };
 
   return (
     <div className="p-6">
@@ -31,7 +51,12 @@ export default function DashboardPage() {
               <td className="p-2 border">{artist.city}</td>
               <td className="p-2 border">{artist.fee}</td>
               <td className="p-2 border">
-                <button className="text-red-500 hover:underline">Delete</button>
+                <button
+                  onClick={() => handleDelete(idx)}
+                  className="text-red-500 hover:underline"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

@@ -35,7 +35,7 @@ export default function ArtistFormPage() {
           console.log("Submitted Values:", values);
         }}
       >
-        {({ values, handleChange, setFieldValue }) => (
+        {({ setFieldValue }) => (
           <Form className="space-y-4">
             {/* Name */}
             <div>
